@@ -121,7 +121,16 @@ public class GoaMap extends FragmentActivity implements OnMapReadyCallback {
 
     void fetchPlacesfromDB(){
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, Constants.PLACES, null, new Response.Listener<JSONArray>() {
+        String jsonString = "[{'lat':'15.489853','lng':'73.824550'}]";
+        JSONArray jsonArray = null;
+        try {
+            jsonArray = new JSONArray(jsonString);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, Constants.PLACES, jsonArray, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 String responsemsg = null;
@@ -141,6 +150,8 @@ public class GoaMap extends FragmentActivity implements OnMapReadyCallback {
                         {
                             System.out.println("Message : " +responsemsg);
                         }
+
+                        markLocation("My Location","15.489853","73.824550");
 
                     } catch (JSONException e) {
                         e.printStackTrace();

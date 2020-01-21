@@ -4,6 +4,6 @@ public class Constants {
 
     private static String ROOT_URL = "http://192.168.0.109/GoaApp/";
 
-    public static String PLACES = ROOT_URL+"fetchplaces.php";
+    public static String PLACES = ROOT_URL+"fetchplaces_copy.php";
 
 }
